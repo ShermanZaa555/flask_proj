@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "layout.html" %}
+
+    {% block content %}
+    <div class="container my-2">
+        <br>
+        <h1>Drug Classification</h1>
+        <br>
+        <form method="POST">
+            {{form.hidden_tag()}}
+
+            {{form.name.label}}
+            <input type="text" class="form-control" id="name" name="name">
+            <br>
+
+            {{form.age.label}}
+            <input type="text" class="form-control" id="age" name="age">
+            <br>
+
+            {{form.gender.label}}
+            <br>
+            <input type="radio" id="male" name="gender" value="M">
+            <label for="male">ชาย</label><br>
+            <input type="radio" id="female" name="gender" value="F">
+            <label for="female">หญิง</label><br>
+            <br>
+
+            {{form.bp.label}}
+            <br>
+            <select class="form-select" aria-label="Default select example" name="bp" id="bp">
+                <option value="HIGH">สูง</option>
+                <option value="NORMAL">ปกติ</option>
+                <option value="LOW">ต่ำ</option>
+            </select>
+            <br>
+
+            {{form.cholesterol.label}}
+            
+            <select class="form-select" aria-label="Default select example" name="cholesterol" id="cholesterol">
+                <option value="HIGH">สูง</option>
+                <option value="NORMAL">ปกติ</option>
+            </select>
+            <br>
+
+            {{form.na_to_k.label}}
+            <input type="text" class="form-control" id="na_to_k" name="na_to_k">
+            <br>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+
+        </form>
+        <hr>
+        {% if session['name'] %}
+            <h1>ผลลัพธ์</h1>
+            ชื่อ {{session['name']}} อายุ {{session['age']}} เพศ {{session['gender']}} <br>
+            ยาที่ได้รับ {{session['result']}}
+        {% else %}
+            <h1>ไม่พบข้อมูล</h1>
+        {% endif %}
+    </div>
+    {% endblock %}
+</body>
+</html>
