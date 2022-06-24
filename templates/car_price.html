@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+</head>
+<body>
+    {% extends "layout.html" %}
+
+    {% block content %}
+    <div class="container my-2">
+        <br>
+        <h1>Car Price Prediction</h1>
+        <br>
+        <form method="POST">
+            {{form.hidden_tag()}}
+
+            {{form.name.label}}
+            <input type="text" class="form-control" id="name" name="name">
+            <br>
+
+            {{form.enginesize.label}}
+            <input type="text" class="form-control" id="enginesize" name="enginesize">
+            <br>
+
+            {{form.carlength.label}}
+            <input type="text" class="form-control" id="carlength" name="carlength">
+            <br>
+
+            {{form.carwidth.label}}
+            <input type="text" class="form-control" id="carwidth" name="carwidth">
+            <br>
+
+            {{form.curbweight.label}}
+            <input type="text" class="form-control" id="curbweight" name="curbweight">
+            <br>
+
+            {{form.wheelbase.label}}
+            <input type="text" class="form-control" id="wheelbase" name="wheelbase">
+            <br>
+
+            {{form.highwaympg.label}}
+            <input type="text" class="form-control" id="highwaympg" name="highwaympg">
+            <br>
+
+            {{form.citympg.label}}
+            <input type="text" class="form-control" id="citympg" name="citympg">
+            <br>
+
+            {{form.horsepower.label}}
+            <input type="text" class="form-control" id="horsepower" name="horsepower">
+            <br>
+
+            {{form.peakrpm.label}}
+            <input type="text" class="form-control" id="peakrpm" name="peakrpm">
+            <br>
+
+            {{form.boreratio.label}}
+            <input type="text" class="form-control" id="boreratio" name="boreratio">
+            <br>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        <hr>
+        {% if session['name'] %}
+            <h1>ผลลัพธ์</h1>
+            ชื่อ {{session['name']}}<br>
+            ราคารถประมาณ {{session['result']}}
+        {% else %}
+            <h1>ไม่พบข้อมูล</h1>
+        {% endif %}
+    </div>
+    {% endblock %}
+</body>
+</html>
